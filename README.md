@@ -16,6 +16,7 @@ A Home Assistant custom integration for Nest thermostats, using the same shared-
 - Before changing a thermostat, read its actual state; after a command, read the state back. Requested values are never reported as confirmed before Google returns them.
 - Offline, removed or unreadable devices become unavailable. New shared thermostats are discovered during subsequent polls.
 - English and Simplified Chinese configuration and error messages; redacted diagnostics.
+- Bundled Google Nest icons and logos, including high-resolution images. After updating through HACS, restart Home Assistant to load them.
 
 ## Requirements
 
