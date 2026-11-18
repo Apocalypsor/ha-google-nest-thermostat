@@ -1,111 +1,111 @@
 {
-  "title": "Google Nest Thermostat (Polling)",
-  "config": {
-    "step": {
-      "user": {
-        "title": "Connect Google Nest",
-        "description": "Use your Device Access project ID and Google OAuth credentials. Only the SDM API is used; event subscriptions are not needed. Obtain a refresh token with scripts/authorize.py in the repository.",
-        "data": {
-          "project_id": "Device Access project ID",
-          "client_id": "OAuth client ID",
-          "client_secret": "OAuth client secret",
-          "refresh_token": "Google refresh token"
-        }
-      },
-      "reauth_confirm": {
-        "title": "Renew Google authorization",
-        "description": "Authorize the same Google account and Device Access project again, then enter the replacement refresh token. Leave the client secret empty to keep the existing one.",
-        "data": {
-          "refresh_token": "Replacement refresh token",
-          "client_secret": "Replacement client secret (optional)"
-        }
-      }
-    },
-    "error": {
-      "invalid_project": "Enter the UUID from the Nest Device Access Console, not the Google Cloud project name.",
-      "invalid_auth": "Google rejected the credentials. Obtain a new refresh token for this OAuth client.",
-      "forbidden": "SDM access was denied. Check the API, Device Access project and selected devices in Partner Connections.",
-      "rate_limited": "Google is rate limiting requests. Wait a minute and try again.",
-      "cannot_connect": "Could not reach Google SDM. Try again later.",
-      "no_thermostats": "No thermostats were returned. Select a thermostat in Google Partner Connections.",
-      "wrong_account": "Use the same Google account as this integration entry.",
-      "unknown": "Google returned an unexpected response."
-    },
-    "abort": {
-      "already_configured": "This Google user and Device Access project are already configured.",
-      "reauth_successful": "Google authorization renewed."
-    }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "title": "Polling and fan timer",
-        "description": "All entities share one device-list request per interval. Fan On starts a timed run; Auto cancels that timer while allowing HVAC-controlled operation.",
-        "data": {
-          "scan_interval": "Refresh interval (30–900 seconds)",
-          "fan_duration": "Manual fan duration (1–720 minutes)"
-        }
-      }
-    },
-    "error": {
-      "invalid_options": "Use a refresh interval of 30–900 seconds and a fan duration of 1–720 minutes."
-    }
-  },
-  "entity": {
-    "sensor": {
-      "temperature": {
-        "name": "Temperature"
-      },
-      "humidity": {
-        "name": "Humidity"
-      },
-      "fan_timeout": {
-        "name": "Fan timer timeout"
-      }
-    }
-  },
-  "exceptions": {
-    "unsupported_mode": {
-      "message": "This thermostat does not support the requested mode."
-    },
-    "invalid_temperature": {
-      "message": "The target must be a finite temperature between 9 and 32 °C."
-    },
-    "range_required": {
-      "message": "Heat/cool mode needs a low and a high target temperature."
-    },
-    "invalid_range": {
-      "message": "The cooling target must be at least 1.5 °C above the heating target."
-    },
-    "single_temperature_required": {
-      "message": "Use a single target temperature in heating or cooling mode."
-    },
-    "thermostat_off": {
-      "message": "The thermostat is OFF. Select a heating/cooling mode explicitly first."
-    },
-    "eco_active": {
-      "message": "Turn off the Eco preset before changing target temperatures."
-    },
-    "unsupported_preset": {
-      "message": "This thermostat does not support the requested preset."
-    },
-    "unsupported_fan": {
-      "message": "This thermostat does not support the requested fan setting."
-    },
-    "device_unavailable": {
-      "message": "The thermostat is offline or no longer shared with this integration."
-    },
-    "invalid_auth": {
-      "message": "Google authorization expired. Reauthenticate the integration."
-    },
-    "rate_limited": {
-      "message": "Google SDM rate limit reached. Try again in {seconds} seconds."
-    },
-    "command_failed": {
-      "message": "Google could not confirm the requested action. Check the thermostat before retrying."
-    },
-    "command_rejected": {
-      "message": "Google rejected this command. Check the current thermostat mode and capabilities."
-    }
-  }
+	"title": "Google Nest Thermostat",
+	"config": {
+		"step": {
+			"user": {
+				"title": "Connect Google Nest",
+				"description": "Use your Device Access project ID and Google OAuth credentials. Only the SDM API is used; event subscriptions are not needed. Obtain a refresh token with scripts/authorize.py in the repository.",
+				"data": {
+					"project_id": "Device Access project ID",
+					"client_id": "OAuth client ID",
+					"client_secret": "OAuth client secret",
+					"refresh_token": "Google refresh token"
+				}
+			},
+			"reauth_confirm": {
+				"title": "Renew Google authorization",
+				"description": "Authorize the same Google account and Device Access project again, then enter the replacement refresh token. Leave the client secret empty to keep the existing one.",
+				"data": {
+					"refresh_token": "Replacement refresh token",
+					"client_secret": "Replacement client secret (optional)"
+				}
+			}
+		},
+		"error": {
+			"invalid_project": "Enter the UUID from the Nest Device Access Console, not the Google Cloud project name.",
+			"invalid_auth": "Google rejected the credentials. Obtain a new refresh token for this OAuth client.",
+			"forbidden": "SDM access was denied. Check the API, Device Access project and selected devices in Partner Connections.",
+			"rate_limited": "Google is rate limiting requests. Wait a minute and try again.",
+			"cannot_connect": "Could not reach Google SDM. Try again later.",
+			"no_thermostats": "No thermostats were returned. Select a thermostat in Google Partner Connections.",
+			"wrong_account": "Use the same Google account as this integration entry.",
+			"unknown": "Google returned an unexpected response."
+		},
+		"abort": {
+			"already_configured": "This Google user and Device Access project are already configured.",
+			"reauth_successful": "Google authorization renewed."
+		}
+	},
+	"options": {
+		"step": {
+			"init": {
+				"title": "Polling and fan timer",
+				"description": "All entities share one device-list request per interval. Fan On starts a timed run; Auto cancels that timer while allowing HVAC-controlled operation.",
+				"data": {
+					"scan_interval": "Refresh interval (30–900 seconds)",
+					"fan_duration": "Manual fan duration (1–720 minutes)"
+				}
+			}
+		},
+		"error": {
+			"invalid_options": "Use a refresh interval of 30–900 seconds and a fan duration of 1–720 minutes."
+		}
+	},
+	"entity": {
+		"sensor": {
+			"temperature": {
+				"name": "Temperature"
+			},
+			"humidity": {
+				"name": "Humidity"
+			},
+			"fan_timeout": {
+				"name": "Fan timer timeout"
+			}
+		}
+	},
+	"exceptions": {
+		"unsupported_mode": {
+			"message": "This thermostat does not support the requested mode."
+		},
+		"invalid_temperature": {
+			"message": "The target must be a finite temperature between 9 and 32 °C."
+		},
+		"range_required": {
+			"message": "Heat/cool mode needs a low and a high target temperature."
+		},
+		"invalid_range": {
+			"message": "The cooling target must be at least 1.5 °C above the heating target."
+		},
+		"single_temperature_required": {
+			"message": "Use a single target temperature in heating or cooling mode."
+		},
+		"thermostat_off": {
+			"message": "The thermostat is OFF. Select a heating/cooling mode explicitly first."
+		},
+		"eco_active": {
+			"message": "Turn off the Eco preset before changing target temperatures."
+		},
+		"unsupported_preset": {
+			"message": "This thermostat does not support the requested preset."
+		},
+		"unsupported_fan": {
+			"message": "This thermostat does not support the requested fan setting."
+		},
+		"device_unavailable": {
+			"message": "The thermostat is offline or no longer shared with this integration."
+		},
+		"invalid_auth": {
+			"message": "Google authorization expired. Reauthenticate the integration."
+		},
+		"rate_limited": {
+			"message": "Google SDM rate limit reached. Try again in {seconds} seconds."
+		},
+		"command_failed": {
+			"message": "Google could not confirm the requested action. Check the thermostat before retrying."
+		},
+		"command_rejected": {
+			"message": "Google rejected this command. Check the current thermostat mode and capabilities."
+		}
+	}
 }

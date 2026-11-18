@@ -1,1 +1,1 @@
-"""Tests for Google Nest Thermostat (Polling)."""
+"""Tests for Google Nest Thermostat."""

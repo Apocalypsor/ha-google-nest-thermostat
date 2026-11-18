@@ -1,4 +1,4 @@
-# Google Nest Thermostat (Polling)
+# Google Nest Thermostat
 
 A Home Assistant custom integration for Nest thermostats.
 
@@ -28,7 +28,7 @@ Events may remain disabled in the Device Access Console. A Google Cloud project 
 
 1. Copy `custom_components/google_nest_thermostat` to `/config/custom_components/google_nest_thermostat`.
 2. Restart Home Assistant.
-3. Open **Settings → Devices & services → Add integration → Google Nest Thermostat (Polling)**.
+3. Open **Settings → Devices & services → Add integration → Google Nest Thermostat**.
 4. Enter the Device Access project ID, OAuth client ID, client secret and refresh token.
 
 ### HACS / Marketplace

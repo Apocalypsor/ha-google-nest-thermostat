@@ -1,4 +1,4 @@
-# Google Nest Thermostat (Polling)
+# Google Nest Thermostat
 
 - This integration is cloud polling only. Never add a Pub/Sub client, subscriber, event-binding requirement, or dependency on the built-in Nest integration.
 - Use the documented Google SDM REST API and OAuth refresh endpoint. Do not use browser cookies or undocumented Nest APIs.
