@@ -1,10 +1,6 @@
 # Google Nest Thermostat (Polling)
 
-A Home Assistant custom integration for Nest thermostats, using the same shared-coordinator polling architecture as [STRATIS AC](https://github.com/Apocalypsor/ha-stratis-ac).
-
-**Reads and controls thermostats through Google's official Smart Device Management (SDM) REST API. No Pub/Sub topic, subscription, publisher role, Google Pub/Sub client, or built-in Nest integration is required.** This is a cloud integration, not local LAN control.
-
-[简体中文](README.zh-CN.md)
+A Home Assistant custom integration for Nest thermostats.
 
 ## Features
 
