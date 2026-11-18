@@ -27,7 +27,11 @@ def main() -> None:
     hacs = json.loads((ROOT / "hacs.json").read_text())
     assert hacs["homeassistant"] == "2026.10.4"
     project = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    assert manifest["version"] == project["project"]["version"]
+    assert manifest["version"] == project["project"]["version"], (
+        f"Version mismatch: manifest.json={manifest['version']}, "
+        f"pyproject.toml={project['project']['version']}. "
+        "Update both versions and regenerate uv.lock with uv lock."
+    )
     strings = json.loads((COMPONENT / "strings.json").read_text())
     for language in ("en", "zh-Hans"):
         translated = json.loads(

@@ -9,8 +9,8 @@ jobs:
         with:
           enable-cache: true
       - run: uv sync --locked --python 3.14
+      - run: uv run --locked python scripts/check_metadata.py
       - run: uv run --locked ruff check .
       - run: uv run --locked ruff format --check .
       - run: uv run --locked python -m compileall -q custom_components scripts tests
       - run: uv run --locked pytest
-      - run: uv run --locked python scripts/check_metadata.py

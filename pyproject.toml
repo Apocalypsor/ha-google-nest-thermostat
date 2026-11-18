@@ -1,6 +1,6 @@
 [project]
 name = "ha-google-nest-thermostat"
-version = "0.1.1"
+version = "0.1.2"
 description = "A polling Home Assistant integration for Google Nest thermostats"
 requires-python = ">=3.14.2"
 dependencies = []
