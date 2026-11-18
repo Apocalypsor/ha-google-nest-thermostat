@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+.local/
+dist/
+client_secret*.json
+nest_credentials*.json
+*tokens*.json
+*.log
+.DS_Store

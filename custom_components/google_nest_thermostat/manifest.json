@@ -1,0 +1,12 @@
+{
+  "domain": "google_nest_thermostat",
+  "name": "Google Nest Thermostat (Polling)",
+  "codeowners": ["@Apocalypsor"],
+  "config_flow": true,
+  "documentation": "https://github.com/Apocalypsor/ha-google-nest-thermostat",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/Apocalypsor/ha-google-nest-thermostat/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

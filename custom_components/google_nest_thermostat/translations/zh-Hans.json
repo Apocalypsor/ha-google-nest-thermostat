@@ -1,0 +1,111 @@
+{
+  "title": "Google Nest 温控器（轮询）",
+  "config": {
+    "step": {
+      "user": {
+        "title": "连接 Google Nest",
+        "description": "填写 Device Access 项目 ID 和 Google OAuth 凭据。组件只调用 SDM API，无需配置事件订阅。可使用仓库中的 scripts/authorize.py 获取刷新令牌。",
+        "data": {
+          "project_id": "Device Access 项目 ID",
+          "client_id": "OAuth 客户端 ID",
+          "client_secret": "OAuth 客户端密钥",
+          "refresh_token": "Google 刷新令牌"
+        }
+      },
+      "reauth_confirm": {
+        "title": "重新授权 Google",
+        "description": "使用原 Google 账号和 Device Access 项目重新授权，填写新刷新令牌。客户端密钥留空时保留原值。",
+        "data": {
+          "refresh_token": "新的刷新令牌",
+          "client_secret": "新的客户端密钥（可选）"
+        }
+      }
+    },
+    "error": {
+      "invalid_project": "请填写 Nest Device Access 控制台中的 UUID，而不是 Google Cloud 项目名称。",
+      "invalid_auth": "Google 拒绝了凭据，请为此客户端重新获取刷新令牌。",
+      "forbidden": "SDM 访问被拒绝，请检查 API、Device Access 项目和合作伙伴连接中选择的设备。",
+      "rate_limited": "请求受到 Google 限流，请等待一分钟再试。",
+      "cannot_connect": "暂时无法连接 Google SDM，请稍后重试。",
+      "no_thermostats": "Google 没有返回温控器，请在合作伙伴连接管理中选择温控器。",
+      "wrong_account": "请使用该集成原来的 Google 账号。",
+      "unknown": "Google 返回了无法识别的响应。"
+    },
+    "abort": {
+      "already_configured": "此 Google 用户和 Device Access 项目已经配置。",
+      "reauth_successful": "Google 授权已更新。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "轮询和风扇定时",
+        "description": "所有实体共用每个周期的一次设备列表请求。风扇“开启”启动定时运行；“自动”取消手动定时，仍允许暖通系统控制风扇。",
+        "data": {
+          "scan_interval": "刷新间隔（30–900 秒）",
+          "fan_duration": "手动风扇持续时间（1–720 分钟）"
+        }
+      }
+    },
+    "error": {
+      "invalid_options": "刷新间隔需为 30–900 秒，风扇时长需为 1–720 分钟。"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "name": "温度"
+      },
+      "humidity": {
+        "name": "湿度"
+      },
+      "fan_timeout": {
+        "name": "风扇定时结束时间"
+      }
+    }
+  },
+  "exceptions": {
+    "unsupported_mode": {
+      "message": "此温控器不支持请求的模式。"
+    },
+    "invalid_temperature": {
+      "message": "目标温度必须为 9–32°C 之间的有限数值。"
+    },
+    "range_required": {
+      "message": "自动冷热模式需要最低和最高两个目标温度。"
+    },
+    "invalid_range": {
+      "message": "制冷目标必须比制热目标至少高 1.5°C。"
+    },
+    "single_temperature_required": {
+      "message": "制热或制冷模式请设置单一目标温度。"
+    },
+    "thermostat_off": {
+      "message": "温控器当前关闭，请先明确选择制热或制冷模式。"
+    },
+    "eco_active": {
+      "message": "请先关闭 Eco 预设，再修改目标温度。"
+    },
+    "unsupported_preset": {
+      "message": "此温控器不支持请求的预设。"
+    },
+    "unsupported_fan": {
+      "message": "此温控器不支持请求的风扇设置。"
+    },
+    "device_unavailable": {
+      "message": "温控器离线，或已取消向此集成共享。"
+    },
+    "invalid_auth": {
+      "message": "Google 授权已失效，请重新验证集成。"
+    },
+    "rate_limited": {
+      "message": "请求受到 Google SDM 限流，请在 {seconds} 秒后重试。"
+    },
+    "command_failed": {
+      "message": "Google 未能确认请求的操作，请先核对温控器状态再重试。"
+    },
+    "command_rejected": {
+      "message": "Google 拒绝了此操作，请检查设备模式和能力。"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Google Nest Thermostat (Polling)",
+  "homeassistant": "2026.10.4",
+  "hacs": "2.0.0"
+}
